@@ -6,13 +6,13 @@ public:
         {
             if(num%2==0)
             {
-                num=num/2;
-                count++;
+                num/=2;
+                count+=1;
             }
             else
             {
-                num--;
-                count++;  
+                num-=1;
+                count+=1;  
             }
             
         }
