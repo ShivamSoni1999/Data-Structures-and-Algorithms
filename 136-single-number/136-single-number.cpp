@@ -1,21 +1,18 @@
 class Solution {
 public:
     int singleNumber(vector<int>& nums) {
-        int n=nums.size();
-        if(n==1) return nums[0];
-        int i=1;
+        int temp=0;
         
-        sort(nums.begin(),nums.end());
-        for(int i=0;i<n;i+=2)
+        //XOR each bcz the elements with frequency=2 will result in 0
+        //And then the only element with frequency=1 will generate the answer.
+        for(int i=0;i<nums.size();i++)
         {
-            if(nums[i]!=nums[i+1])
-            {
-                return nums[i];
-            }
+            temp=temp^nums[ i ];  
         }
         
-        return -1;
-        
+        return temp;
         
     }
 };
+
+//O(N), O(1) Solution
