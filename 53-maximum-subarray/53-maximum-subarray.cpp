@@ -2,6 +2,10 @@ class Solution {
 public:
     int maxSubArray(vector<int>& nums) {
         
+        ios_base::sync_with_stdio(0);
+        cin.tie(0); cout.tie(0);
+        
+        
         int n = nums.size();
         //boundary case
         if(n==1) return nums[0];
