@@ -4,8 +4,9 @@ public:
         int n= nums.size();
         int start=0;
         int end = nums.size()-1;
-        if (n==1)
-            return nums[0];
+        if (n==1) return nums[0];
+        if(nums[0]<nums[n-1]) return nums[0];
+        
         while (start<=end)
         {
             int mid= start + (end-start)/2;
