@@ -18,10 +18,11 @@ public:
         {
             if(arr[i] - arr[i-1] == res)
             {
-                vector<int> temp;
-                temp.push_back(arr[i-1]);
-                temp.push_back(arr[i]);
-                v.push_back(temp);
+                // vector<int> temp;
+                // temp.push_back(arr[i-1]);
+                // temp.push_back(arr[i]);
+                // v.push_back(temp);
+                v.push_back({arr[i-1],arr[i]});
             }
         }
         
