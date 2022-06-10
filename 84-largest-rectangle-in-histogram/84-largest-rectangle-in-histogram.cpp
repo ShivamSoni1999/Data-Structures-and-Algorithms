@@ -3,12 +3,12 @@ public:
     vector<int>LeftIndex(vector<int>& arr,int n) //function returns index of left smallest element
       {
            vector<int>left;
-           stack<pair<int,int>>s;
+           stack<pair<int,int>>s;// mantain <Element,Index>
            int pseudoIndex=-1;
            for(int i=0;i<n;i++)
            {
                if(s.size()==0) left.push_back(pseudoIndex);
-               else if(s.size()>0 && s.top().first<arr[i]) left.push_back(s.top().second);
+               else if(s.size()>0 && s.top().first<arr[i]) left.push_back(s.top().second); //pushing index of smaller element
                else if(s.size()>0 && s.top().first>=arr[i])
                {
                       while(s.size()>0 && s.top().first>=arr[i]) {s.pop();}
@@ -40,7 +40,7 @@ public:
         return right;
     }
     int largestRectangleArea(vector<int>& arr) {
-        
+       ios::sync_with_stdio(0); cout.tie(0); cin.tie(0); 
        int n = arr.size(); 
        vector<int>left  =LeftIndex(arr,n);
        vector<int>right =RightIndex(arr,n);
