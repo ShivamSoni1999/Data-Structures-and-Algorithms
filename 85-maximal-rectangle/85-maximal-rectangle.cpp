@@ -4,7 +4,9 @@ class Solution {
 public:
 int largestRectangleArea(vector<int>& heights) {
     int n= heights.size();
-   
+    if(n==0) return 0;
+    if(n==1 and heights[0]==0) return 0;
+    if(n==1 and heights[0]==1) return 1;
     vector<int> left,right;
     stack<pair<int,int>> s1,s2;
     int pseudo_index =-1;
