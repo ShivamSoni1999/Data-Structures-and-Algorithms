@@ -2,16 +2,14 @@
 
 class Solution {
 public:
-int largestRectangleArea(vector<int>& heights) {
-    int n= heights.size();
-    if(n==0) return 0;
-    if(n==1 and heights[0]==0) return 0;
-    if(n==1 and heights[0]==1) return 1;
+int largestRectangleArea(vector<int>& heights) //Function returns MAH[Largest Rec. in Histrogram]
+{
+    int n= heights.size(); 
     vector<int> left,right;
     stack<pair<int,int>> s1,s2;
     int pseudo_index =-1;
     int pseudo_index1 =n;
-    for (int i=0;i<n;i++)
+    for (int i=0;i<n;i++)   //finding nearest greater to left
     {
       if (s1.size()==0)
       {
@@ -38,7 +36,7 @@ int largestRectangleArea(vector<int>& heights) {
       }
       s1.push({heights[i],i});
     }
-    for (int i=n-1;i>=0;i--)
+    for (int i=n-1;i>=0;i--)        //finding nearest greater to right
     {
       if (s2.size()==0)
       {
@@ -66,22 +64,30 @@ int largestRectangleArea(vector<int>& heights) {
       s2.push({heights[i],i});
     }
     reverse(right.begin(),right.end());
-    int m=INT_MIN;
+    
+    int mx=INT_MIN;
+    int area=0;
     for (long long i=0;i<n;i++)
     {
-      m=max(m,(right[i]-left[i]-1)*heights[i]);// taking max after finding area
+           int width=right[i]-left[i]-1; //calculating widhth 
+           area=heights[i]*width;            //finding area for each
+           mx=max(mx,area);// taking max after finding area
     }
-    return m;
+    return mx;
     }
 
-    int maximalRectangle(vector<vector<char>>& matrix) {
+    int maximalRectangle(vector<vector<char>>& matrix) 
+    {
+        ios::sync_with_stdio(0); cout.tie(0); cin.tie(0); 
         int m=matrix.size();
         if(m==0) return 0;
         int n=matrix[0].size(), result=0;
         vector<int> histogram(n, 0);
         
-        for(int i=0; i<m; i++){
-            for(int j=0; j<n; j++){
+        for(int i=0; i<m; i++)
+        {
+            for(int j=0; j<n; j++)
+            {
                 if(matrix[i][j]=='1')
                     histogram[j]+=1;
                 else
@@ -89,7 +95,7 @@ int largestRectangleArea(vector<int>& heights) {
             }
             
             result = max(result, largestRectangleArea(histogram));
-            cout<<result<<" ";
+            // cout<<result<<" ";
         }
         return result;
     }
