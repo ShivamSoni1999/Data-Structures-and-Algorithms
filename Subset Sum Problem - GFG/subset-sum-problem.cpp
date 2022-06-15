@@ -11,6 +11,10 @@ class Solution{
 public:
     bool isSubsetSum(vector<int>arr, int sum){
         // code here 
+        if(sum < 0)
+            return false;
+        if(sum == 0)
+            return true;
         int n=arr.size();
         bool t[n+1][sum+1];
         // i denotes the size of the array 
