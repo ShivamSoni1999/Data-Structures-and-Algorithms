@@ -18,7 +18,7 @@ class Solution{
       {
         t[i][0] = 0;
       }
-      for (int j = 1; j <= sum; j++)
+      for (int j = 0; j <= sum; j++)
       {
         t[0][j] = INF;
       }
