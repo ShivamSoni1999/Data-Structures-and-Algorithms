@@ -10,23 +10,13 @@ public:
             return -1;
         
         int t[n+1][sum+1];
-        for(int i=0;i<=n;i++)
-        {
-            for(int j=0;j<=sum;j++)
-            {
-                if (j == 0)
-				    t[i][j] = 0;
-			    if (i == 0)
-                    t[i][j] = INF;
-                if (i == 1)
-                {
-                    if (j % coins[i - 1] == 0)
-                        t[i][j] = j / coins[i - 1];
-                    else
-                        t[i][j] = INF;
-                }
-            }
-        }
+        for(int i=0;i<=n;i++){
+			t[i][0] = 0;
+		}
+		for(int j=1;j<=sum;j++){
+			t[0][j] =INF;
+		}
+
         t[0][0] = 0;
         for (int i = 1; i <= n; i++)
         {
