@@ -8,24 +8,32 @@ using namespace std;
 
 class Solution
 {
-    int helper(string text1, string text2, int n, int m) {
-        if(n==0 or m==0)
-            return 0;
-        if(t[n][m]!=-1)
-            return t[n][m];
-        if(text1[n-1]==text2[m-1])
-            t[n][m] = 1 + helper(text1,text2,n-1,m-1);
-        else
-            t[n][m] = max(helper(text1,text2,n,m-1),helper(text1,text2,n-1,m));
-        return t[n][m];
+  int helper(string x, string y, int n, int m) {
+    int t[n + 1][m + 1];
+    if (n == 0 or m == 0)
+      return 0;
+    for (int i = 0; i <= n; i++) {
+      for (int j = 0; j <= m; j++) {
+        if (i == 0 or j == 0)
+          t[i][j] = 0;
+      }
     }
-    
+    for (int i = 1; i <= n; i++) {
+      for (int j = 1; j <= m; j++) {
+        if (x[i - 1] == y[j - 1]) {
+          t[i][j] = 1 + t[i - 1][j - 1];
+        } else {
+          t[i][j] = max(t[i][j - 1], t[i - 1][j]);
+        }
+      }
+    }
+    return t[n][m];
+  }
     public:
     int t[1001][1001];
     //Function to find the length of longest common subsequence in two strings.
     int lcs(int x, int y, string s1, string s2)
     {
-        memset(t,-1,sizeof(t));
         return helper(s1,s2,x,y);
     }
 };
