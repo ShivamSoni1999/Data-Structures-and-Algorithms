@@ -15,10 +15,27 @@ class Solution
 	
 	if(t[eggs][floors]!=-1)
 	    return t[eggs][floors];
-
+    int low = 0;
+    int high = 0;
 	int mn = INT_MAX;
 	for (int k = 1; k <= floors; k++) {
-		int temp_ans = 1 + max(Solve(eggs - 1, k - 1), Solve(eggs, floors - k)); // once egg break means decrement both floor and egg another agg did not break means check egg dropping from above 
+	    //1. Egg will break
+        //2. Egg will not break
+	  if (t[eggs - 1][k - 1] != -1) // break the temp in sub problemes 
+        high = t[eggs - 1][k - 1];
+      else {
+        high = Solve(eggs - 1, k - 1);
+        t[eggs - 1][k - 1] = high;
+      }
+
+      if (t[eggs][floors - k] != -1)
+        low = t[eggs][floors - k];
+      else {
+        low = Solve(eggs, floors - k);
+        t[eggs][floors - k] = low;
+      }
+
+      int temp_ans = 1 + max(low, high);
 		mn = min(mn, temp_ans);
 	}
 
