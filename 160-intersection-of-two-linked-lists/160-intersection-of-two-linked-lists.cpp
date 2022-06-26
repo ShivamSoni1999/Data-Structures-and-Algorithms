@@ -1,4 +1,4 @@
-//striver sol
+//Adobe Amazon D-E-Shaw Flipkart Goldman Sachs MakeMyTrip Microsoft Qualcomm Visa VMWare
 class Solution {
 public:
     ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
