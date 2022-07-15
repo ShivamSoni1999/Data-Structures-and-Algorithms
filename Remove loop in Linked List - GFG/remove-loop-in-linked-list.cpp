@@ -77,34 +77,24 @@ class Solution
 {
     public:
     //Function to remove a loop in the linked list.
-    void removeLoop(Node* head)
+void removeLoop(Node* head)
     {
-        Node * slow = head;
-        Node * fast = head;
-        while (fast != NULL && fast -> next != NULL) 
-        {
-          slow = slow -> next;
-          fast = fast -> next -> next;
-          if (slow == fast) {
-            break;
-          }
+        Node *fast = head,*slow = head,*hold=head;
+        while(fast && fast->next){
+            fast = fast->next->next;
+            slow = slow->next;
+            if(slow == fast)
+            {
+                while(slow != hold)
+                {
+                    hold=hold->next;
+                    slow=slow->next;
+                }
+                while(fast->next!=slow)
+                    fast=fast->next;
+                fast->next = NULL;
+            }
         }
-        if (slow == head) {
-          while (fast -> next != slow) {
-            fast = fast -> next;
-          }
-          fast -> next = NULL;
-          return;
-        } else if (slow == fast) {
-          fast = head;
-          while (slow -> next != fast -> next) {
-            fast = fast -> next;
-            slow = slow -> next;
-          }
-          slow -> next = NULL;
-        }
-        
-        
     }
 };
 
